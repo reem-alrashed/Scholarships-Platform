@@ -1,7 +1,7 @@
 jQuery(document).ready(function($) {
   "use strict";
 
-  //Contact
+  // Get form
   $('form.contactForm').submit(function() {
     var f = $(this).find('.form-group'),
       ferror = false,
@@ -29,6 +29,7 @@ jQuery(document).ready(function($) {
             }
             break;
 
+            // Check length
           case 'minlen':
             if (i.val().length < parseInt(exp)) {
               ferror = ierror = true;
@@ -94,12 +95,12 @@ jQuery(document).ready(function($) {
     if( ! action ) {
       action = 'contactform/contactform.php';
     }
+    
     $.ajax({
       type: "POST",
       url: action,
       data: str,
       success: function(msg) {
-        // alert(msg);
         if (msg == 'OK') {
           $("#sendmessage").addClass("show");
           $("#errormessage").removeClass("show");
